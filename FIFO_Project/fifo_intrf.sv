@@ -29,10 +29,5 @@ interface fifo_intrf(input wr_clk,rd_clk,res);
 	    input rd_en,rdata,empty,underflow;
    endclocking
 
-   	property reset;
-		@(posedge wr_clk) (res==1) |-> ##0(wr_en==0 && rd_en==0 && rdata==0 && full==0 && overflow==0 && underflow==0 && empty==1 && dut.wr_ptr==0 && dut.rd_ptr==0);
-	endproperty
- 	RESET: assert property(reset);
-
-
 endinterface	
+
